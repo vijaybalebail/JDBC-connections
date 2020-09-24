@@ -1,0 +1,32 @@
+In 19.3 version of Oracle database, The JDBC url now accepts some connection properties as well.
+
+ This is great news. Now we can connect to some preconfigured application  and alter  properties to improve performance or pass Security parameters without having to change application code or recompile.
+
+The most common change we do to jdbc default concretion  is the Fetchsize for getting the query result set.
+
+The default fetch size is 10. This size appears to be tuned for oltp transactions. However, for DW applications and ETLs and getting large amount of data across the network, this size is very small.
+This fetch size could however be set at the driver level or with the application code to improve performance.
+
+The methods  to set at Driver level by setting the property defaultRowPrefetch
+1.	 This parameter could be set in ojdbc.properties (18c and higher)
+2.	Pass as parameters at run time. (until 12.2.)  .(e.g. java -Doracle.jdbc.defaultRowPrefetch='1000 '   JDBCTest )
+
+Prior to 12.2, the only way to set this property used to be from within the java application.
+Within a JAVA program, you can use setFetchSize as a connection method or at a statement level.
+ From within the java application the usual ways to set row fetch size are:
+1.	Via java.sql.Connection vendor implementation class custom method (e.g. OracleConnection.setDefaultRowPrefetch)
+2.	Via java.sql.Statement.setFetchSize(int): gives a hint to the driver as to the row fetch size for all ResultSets obtained from this Statement. This method is inherited by PreparedStatement and CallableStatement. Most JDBC drivers support it.
+3.	Via java.sql.ResultSet.setFetchSize(int): gives a hint to the driver as to the row fetch size for all this ResultSet.
+
+Now with 19c, We can pass this properties in the jdbc url.
+You can change default fetch size by setting connection property “defaultRowPrefetch”.
+ In the following example we use the detail  Detailed  URL syntax with properties.
+
+
+Starting from 19c, easy connect syntax also support adding properties.
+
+
+
+
+If you have more than one property to set, the syntax is to start with a ? and any additional parameters with a & sign.
+For more Detailed information, chek out this Doc.

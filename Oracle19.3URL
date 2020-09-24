@@ -1,6 +1,13 @@
-In 19.3 version of Oracle database, The JDBC url now accepts some connection properties as well.
+## ORACLE JDBC 19c pass parameters in JDBC URL
 
- This is great news. Now we can connect to some preconfigured application  and alter  properties to improve performance or pass Security parameters without having to change application code or recompile.
+
+In 19.3 version of Oracle database, The JDBC url now accepts some connection properties as well.
+This is great news. This can overcome some default parameters in the JDBC programs that are not tuned properly.
+Now we can connect to any application where JDBC url is configurable. (which most applications are).
+Connect to Oracle using JDBC URL and pass the properties parameters to
+- improve performance
+-  pass Security parameters
+- Pass Transparent Application Continuity parameters
 
 The most common change we do to jdbc default concretion  is the Fetchsize for getting the query result set.
 

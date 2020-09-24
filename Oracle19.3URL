@@ -9,7 +9,20 @@ Connect to Oracle using JDBC URL and pass the properties parameters to
 -  pass Security parameters
 - Pass Transparent Application Continuity parameters
 
-The most common change we do to jdbc default concretion  is the Fetchsize for getting the query result set.
+The most common change we do to jdbc default concretion  is the Fetchsize, Buffer or ArraySize for getting the
+query result set.
+
+Now with 19c, We can pass this properties in the jdbc url.
+You can change default fetch size by setting connection property “defaultRowPrefetch”.
+ In the following example  URL syntax with properties.
+
+ <copy>jdbc:oracle:thin:@(description= (address=(protocol=tcps)(port=1521)(host=example1.com)) (connect_data=
+ (service_name=example2.com)))?oracle.jdbc.defaultRowPrefetch=1000</copy>
+
+Starting from 19c, easy connect syntax also support adding properties.
+
+If you have more than one property to set, the syntax is to start with a ? and any additional parameters with a & sign.
+For more Detailed information, chek out this Doc.
 
 The default fetch size is 10. This size appears to be tuned for oltp transactions. However, for DW applications and ETLs and getting large amount of data across the network, this size is very small.
 This fetch size could however be set at the driver level or with the application code to improve performance.
@@ -24,13 +37,3 @@ Within a JAVA program, you can use setFetchSize as a connection method or at a s
 1.	Via java.sql.Connection vendor implementation class custom method (e.g. OracleConnection.setDefaultRowPrefetch)
 2.	Via java.sql.Statement.setFetchSize(int): gives a hint to the driver as to the row fetch size for all ResultSets obtained from this Statement. This method is inherited by PreparedStatement and CallableStatement. Most JDBC drivers support it.
 3.	Via java.sql.ResultSet.setFetchSize(int): gives a hint to the driver as to the row fetch size for all this ResultSet.
-
-Now with 19c, We can pass this properties in the jdbc url.
-You can change default fetch size by setting connection property “defaultRowPrefetch”.
- In the following example we use the detail  Detailed  URL syntax with properties.
-
-
-Starting from 19c, easy connect syntax also support adding properties.
-
-If you have more than one property to set, the syntax is to start with a ? and any additional parameters with a & sign.
-For more Detailed information, chek out this Doc.

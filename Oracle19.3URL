@@ -16,8 +16,8 @@ Now with 19c, We can pass this properties in the jdbc url.
 You can change default fetch size by setting connection property “defaultRowPrefetch”.
  In the following example  URL syntax with properties.
 
- <copy>jdbc:oracle:thin:@(description= (address=(protocol=tcps)(port=1521)(host=example1.com)) (connect_data=
- (service_name=example2.com)))?oracle.jdbc.defaultRowPrefetch=1000</copy>
+<p>jdbc:oracle:thin:@(description= (address=(protocol=tcps)(port=1521)(host=example1.com)) (connect_data=
+ (service_name=example2.com)))?oracle.jdbc.defaultRowPrefetch=1000</P>
 
 Starting from 19c, easy connect syntax also support adding properties.
 

@@ -9,7 +9,7 @@ Connect to Oracle using JDBC URL and pass the properties parameters to
 -  pass Security parameters
 - Pass Transparent Application Continuity parameters
 
-The most common change we do to jdbc default connection  is the Fetchsize, Buffer or ArraySize for getting the query result set. 
+The most common change we do to jdbc default connection  is the Fetchsize, Buffer or ArraySize for getting the query result set.
 
 Now with 19c, We can pass this properties in the jdbc url.  The default fetch size is 10. This size appears to be tuned for oltp transactions. However, for Data warehouse applications and ETLs,  getting large amount of data across the network is slow  using the default size.
 
@@ -31,9 +31,9 @@ For more Detailed information, check out this [Doc.](https://www.oracle.com/a/te
 
 ### Previous versions
 
-This fetch size could however be set at the driver level or with the application code to improve performance.
+This fetch size could  be set at the driver level or with the application code to improve performance.
 
-The methods  to set at Driver level by setting the property defaultRowPrefetch
+The methods  to set at Driver level by setting the property defaultRowPrefetch are
 1.	 This parameter could be set in ojdbc.properties (18c and higher)
 2.	Pass as parameters at run time. (until 12.2.)  .(e.g. java -Doracle.jdbc.defaultRowPrefetch='1000 '   JDBCTest )
 
@@ -44,3 +44,7 @@ Within a JAVA program, you can use setFetchSize as a connection method or at a s
 1.	 java.sql.Connection vendor implementation class custom method (e.g. OracleConnection.setDefaultRowPrefetch)
 2.	Via java.sql.Statement.setFetchSize(int): gives a hint to the driver as to the row fetch size for all ResultSets obtained from this Statement. This method is inherited by PreparedStatement and CallableStatement. Most JDBC drivers support it.
 3.	Via java.sql.ResultSet.setFetchSize(int): gives a hint to the driver as to the row fetch size for all this ResultSet.
+
+##  Conculsion
+
+This parameter is going to make the JDBC URL very flexible to connect to Oracle databases. It can now include tuning parameters, TNS_ADMIN and wallet information and many other functionality like HA and Transparent Application Continuity.

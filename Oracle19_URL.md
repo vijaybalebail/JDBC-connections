@@ -11,7 +11,7 @@ This can be used to connect to Oracle databases using JDBC URL and pass the prop
 
 The most common change we do to jdbc default connection  is the Fetchsize, Buffer size or ArraySize for getting the query result set.
 
-Now with 19c, We can pass this properties in the jdbc url.  The default fetch size is 10. This size appears to be tuned for oltp transactions. However, for Data warehouse applications and ETLs,  getting large amount of data across the network is slow  using the default size.
+Now with 19c, We can pass these properties in the jdbc url.  The default fetch size is 10. This size appears to be tuned for oltp transactions. However, for Data warehouse applications and ETLs,  getting large amount of data across the network is slow  using the default size.
 
 You can change default fetch size by setting connection property “defaultRowPrefetch”.
  In the following example  URL syntax with properties.

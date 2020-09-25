@@ -1,4 +1,4 @@
-## ORACLE JDBC 19c pass parameters in JDBC URL
+## ORACLE JDBC 19c  Transparent Application Continuity
 
 
 In 19.3 version of Oracle database, The JDBC url now accepts some connection properties as well.
